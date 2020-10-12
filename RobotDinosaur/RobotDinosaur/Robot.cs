@@ -11,16 +11,15 @@ namespace RobotDinosaur
         public string robotName;
         public int robotHealth;
         public int robotPower;
-        public int attackPower;
-        public List<string> weapon = new List<string>();
+        
+        public Weapon weapon;
 
-        public Robot(string robotName, int robotHealth, int robotPower, int attackPower)// List<string> weapon )
+        public Robot(string robotName, int robotHealth, int robotPower)
         {
             this.robotName= robotName;
             this.robotHealth = robotHealth;
             this.robotPower = robotPower;
-            this.attackPower = attackPower;
-            //this.weapon = weapon;
+            this.weapon = new Weapon("sword",10);
 
 
         }

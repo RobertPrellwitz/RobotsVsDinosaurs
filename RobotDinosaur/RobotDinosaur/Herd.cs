@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 namespace RobotDinosaur
 {
     public class Herd
-    {
-        List<Dinosaur> dinos;
-
+    {   //Member Variables
+        public List<Dinosaur> herd;
+        public int herdHealth;
         public Herd()
         {
-            dinos = new List<Dinosaur>();
+            //initiate sample herd
+            herd = new List<Dinosaur>();
+            Dinosaur d1=CreateDinosaur("Snorkasaurus", 100, 125, 25);
+            PopulateHerd(d1);
+            Dinosaur d2 = CreateDinosaur("Tyrano", 100, 100, 12);
+            PopulateHerd(d2);
+            Dinosaur d3 = CreateDinosaur("godzilla", 150, 150, 50);
+            PopulateHerd(d3);
         }
         public Dinosaur CreateDinosaur(string dinoType, int dinoHealth, int dinoEnergy, int dinoAttackPower)
         {
@@ -20,9 +27,19 @@ namespace RobotDinosaur
         }
         public void PopulateHerd(Dinosaur dino)
         {
-            dinos.Add(dino);
+            herd.Add(dino);
         }
-            
+        public void startingHerdHealth(List<Dinosaur> herd)
+        {
+            herdHealth = 0;
+            foreach(Dinosaur dinosaur in herd)
+            {
+                herdHealth = herdHealth + dinosaur.dinoHealth;
+            }
+        }
+        public void DinoDamage()
+        {
+        }
     }
 
 }
