@@ -7,7 +7,7 @@ namespace RobotDinosaur
 {
     public class Fleet
     {
-        List<Robot> fleet;
+        public List<Robot> fleet;
         public int fleetHealth;
 
         public Fleet()
