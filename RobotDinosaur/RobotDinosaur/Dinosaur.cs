@@ -8,14 +8,17 @@ namespace RobotDinosaur
     public class Dinosaur
     {
         // Memeber Variables
-        string dinoType;
-        int dinoHealth;
-        int dinoEnergy;
-        int dinoAttackPower;
+        public string dinoType;
+        public int dinoHealth;
+        public int dinoEnergy;
+        public int dinoAttackPower;
 
-        public Dinosaur()
+        public Dinosaur(string dinoType, int dinoHealth, int dinoEnergy, int dinoAttackPower)
         {
-            
+            this.dinoType = dinoType;
+            this.dinoHealth = dinoHealth;
+            this.dinoEnergy = dinoEnergy;
+            this.dinoAttackPower = dinoAttackPower;
         }
     }
 }
