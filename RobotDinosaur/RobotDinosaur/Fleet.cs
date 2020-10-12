@@ -13,10 +13,15 @@ namespace RobotDinosaur
         {
             robots = new List<Robot>();
         }
-        public Robot CreateRobot(string robotName, int robotHealth, int robotPower, int attackPower, List<string> weapon)
+        public Robot CreateRobot(string robotName, int robotHealth, int robotPower, int attackPower)//, List<string> weapon)
         {
-            Robot robot = new Robot(robotName, robotHealth, robotPower, attackPower, weapon);
+            Robot robot = new Robot(robotName, robotHealth, robotPower, attackPower);//, weapon);
             return robot;
+        }
+        public void PoplulateFleet(Robot robot)
+        {
+            robots.Add(robot);
+
         }
     }
 }
