@@ -7,8 +7,15 @@ namespace RobotDinosaur
 {
     public class Dinosaur
     {
+        // Memeber Variables
+        string dinoType;
+        int dinoHealth;
+        int dinoEnergy;
+        int dinoAttackPower;
+
         public Dinosaur()
         {
+            
         }
     }
 }
