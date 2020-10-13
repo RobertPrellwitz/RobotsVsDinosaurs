@@ -13,9 +13,9 @@ namespace RobotDinosaur
         public Fleet()
         {
             fleet = new List<Robot>();
-            Robot R1 = CreateRobot("R2 D2", 100, 25);
+            Robot R1 = CreateRobot("R2 D2", 100, 50);
             PoplulateFleet(R1);
-            Robot R2 = CreateRobot("C3PO", 100, 5);
+            Robot R2 = CreateRobot("C3PO", 100, 50);
             PoplulateFleet(R2);
             Robot R3 = CreateRobot("Eliminator", 100, 100);
             PoplulateFleet(R3);

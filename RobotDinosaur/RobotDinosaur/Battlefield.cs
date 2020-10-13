@@ -48,8 +48,9 @@ namespace RobotDinosaur
         }
         public void DinoAttack()
         {
-            Console.WriteLine("Battle Bot " + battleBot.robotName + " health: " + battleBot.robotHealth);
+            Console.WriteLine("\nBattle Bot " + battleBot.robotName + " health: " + battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet overall health " + rebel.fleetHealth+"\n");
+            Console.WriteLine("The Bedrock Herd is launching another attack");
 
             if (battleBot.robotHealth > battleDino.dinoAttackPower)
             {
@@ -64,18 +65,18 @@ namespace RobotDinosaur
             }
             Console.WriteLine("Battle Bot "+ battleBot.robotName + " health: "+battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet overall health "+ rebel.fleetHealth+"\n");
-
-
         }
+
         public void BotAttack()
         {
-            Console.WriteLine("Battle Dino " + battleDino.dinoType + " health: " + battleDino.dinoHealth);
+            Console.WriteLine("\nBattle Dino " + battleDino.dinoType + " health: " + battleDino.dinoHealth);
             Console.WriteLine("Bedrocks overall heard heath: " + bedRock.herdHealth + "\n");
+            Console.WriteLine("The Rebel Fleet is preparing for their attack run");
 
             if (battleDino.dinoHealth > battleBot.weapon.weaponPower)
             {
 
-                battleDino.dinoHealth = battleDino.dinoHealth - battleBot.robotPower;
+                battleDino.dinoHealth = battleDino.dinoHealth - battleBot.weapon.weaponPower;
                 bedRock.herdHealth = bedRock.herdHealth - battleBot.weapon.weaponPower;
             }
             else
@@ -83,12 +84,13 @@ namespace RobotDinosaur
                 bedRock.herdHealth = bedRock.herdHealth - battleDino.dinoHealth;
                 battleDino.dinoHealth = 0;
             }
-            Console.WriteLine("Battle Dino "+ battleDino.dinoType + " health: "+battleDino.dinoHealth);
+            Console.WriteLine("\nBattle Dino "+ battleDino.dinoType + " health: "+battleDino.dinoHealth);
             Console.WriteLine("Bedrocks overall heard heath: " + bedRock.herdHealth+"\n");
         }
           // Current Standings
         public void UpDateStandings()
         {
+            Console.WriteLine("At the end of this round of battle the standings are");
             Console.WriteLine("Robots with " + rebel.fleetHealth + " health remaining!");
             Console.WriteLine("Dinosaurs with "+ bedRock.herdHealth+ " health remaining!");
         }
@@ -96,22 +98,23 @@ namespace RobotDinosaur
         public void RunBattle()
         {
             // While loop to run until either rebel fleet or bedrock herd lose
-            //while (rebel.fleetHealth > 0 && bedRock.herdHealth > 0)
+            while (rebel.fleetHealth > 0 && bedRock.herdHealth > 0)
+            {
+                PickCombatants();
+                DinoAttack();
+                PickCombatants();
+                BotAttack();
+                UpDateStandings();
+            }
+            if(rebel.fleetHealth > bedRock.herdHealth)
+            {
+                Console.WriteLine ("The rebel alliance wins!  Congrats Robot combatants");
+            }
+            else
+            {
+                Console.WriteLine("The BedRock herd proved extinct Reptiles still have it with the win");
+            }
            
-            PickCombatants();
-            DinoAttack();
-            BotAttack();
-            UpDateStandings();
-
-            PickCombatants();
-            DinoAttack();
-            BotAttack();
-            UpDateStandings();
-
-            PickCombatants();
-            DinoAttack();
-            BotAttack();
-            UpDateStandings();
 
         }
     }
