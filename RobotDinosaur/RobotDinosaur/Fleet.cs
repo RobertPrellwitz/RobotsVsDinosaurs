@@ -13,11 +13,11 @@ namespace RobotDinosaur
         public Fleet()
         {
             fleet = new List<Robot>();
-            Robot R1 = CreateRobot("R2 D2", 100, 50);
+            Robot R1 = CreateRobot("R2 D2", 150, 30);
             PoplulateFleet(R1);
-            Robot R2 = CreateRobot("C3PO", 100, 50);
+            Robot R2 = CreateRobot("C3PO", 50, 50);
             PoplulateFleet(R2);
-            Robot R3 = CreateRobot("Eliminator", 100, 100);
+            Robot R3 = CreateRobot("Eliminator", 300, 100);
             PoplulateFleet(R3);
             startingFleetHealth(fleet);
         }

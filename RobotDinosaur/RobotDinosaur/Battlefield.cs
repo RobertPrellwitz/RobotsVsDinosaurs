@@ -12,7 +12,9 @@ namespace RobotDinosaur
         public int  dinoDamage;
         public Herd bedRock;
         public Fleet rebel;
-        // counter variable
+        public int attackEnergy;
+        //Random rand;  for later gameplay enhancment
+        
 
         public Robot battleBot;
         public Dinosaur battleDino;
@@ -23,20 +25,22 @@ namespace RobotDinosaur
            // Game Initialization
             bedRock = new Herd();
             rebel = new Fleet();
-            
+            attackEnergy = 10;
+           // rand = new Random(); for later gameplay enhancement
         }
         // attack proccess
 
-        public void PickCombatants()
+        public void PickAttackBot()
         {   /// select robot for attack
             for (int i = 0; i < rebel.fleet.Count; i++)
             {
-                if (rebel.fleet[i].robotHealth > 0)
+                if (rebel.fleet[i].robotHealth > 0 && rebel.fleet[i].robotPower > 10)
                 {
                     battleBot = rebel.fleet[i];
                     break;
                 }          
             }
+            // Dino to be attacked
             for (int j = 0; j < bedRock.herd.Count; j++)
             {
                 if (bedRock.herd[j].dinoHealth > 0)
@@ -46,43 +50,73 @@ namespace RobotDinosaur
                 }
             }
         }
+
+        public void PickAttackDino()
+        {   /// select robot to be attacked
+            for (int i = 0; i < rebel.fleet.Count; i++)
+            {
+                if (rebel.fleet[i].robotHealth > 0)
+                {
+                    battleBot = rebel.fleet[i];
+                    break;
+                }
+            }
+            /// Dino for attack
+            for (int j = 0; j < bedRock.herd.Count; j++)
+            {
+                if (bedRock.herd[j].dinoHealth > 0 && bedRock.herd[j].dinoEnergy > 10)
+                {
+                    battleDino = bedRock.herd[j];
+                    break;
+                }
+            }
+        }
+
         public void DinoAttack()
         {
+            Console.WriteLine("The Bedrock Herd is launching an attack against the Robot Fleet");
+            Console.WriteLine(battleDino.dinoType + " is attacking "+ battleBot);
             Console.WriteLine("\nBattle Bot " + battleBot.robotName + " health: " + battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet overall health " + rebel.fleetHealth+"\n");
-            Console.WriteLine("The Bedrock Herd is launching another attack");
+            
 
             if (battleBot.robotHealth > battleDino.dinoAttackPower)
             {
                 battleBot.robotHealth = battleBot.robotHealth - battleDino.dinoAttackPower;
                 rebel.fleetHealth = rebel.fleetHealth - battleDino.dinoAttackPower;
+                battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
             }
             else
             {
                 rebel.fleetHealth = rebel.fleetHealth - battleBot.robotHealth;
                 battleBot.robotHealth = 0;
+                battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
 
             }
-            Console.WriteLine("Battle Bot "+ battleBot.robotName + " health: "+battleBot.robotHealth);
-            Console.WriteLine("Rebel Fleet overall health "+ rebel.fleetHealth+"\n");
+            Console.WriteLine("Battle Bot "+ battleBot.robotName + " remaining health: "+battleBot.robotHealth);
+            Console.WriteLine("Rebel Fleet remaining overall health "+ rebel.fleetHealth+"\n");
         }
 
         public void BotAttack()
         {
+            Console.WriteLine("The Rebel Fleet is preparing for their attack run");
+            Console.WriteLine(battleBot.robotName +" is attacking "+ battleDino.dinoType);
             Console.WriteLine("\nBattle Dino " + battleDino.dinoType + " health: " + battleDino.dinoHealth);
             Console.WriteLine("Bedrocks overall heard heath: " + bedRock.herdHealth + "\n");
-            Console.WriteLine("The Rebel Fleet is preparing for their attack run");
+           
 
             if (battleDino.dinoHealth > battleBot.weapon.weaponPower)
             {
 
                 battleDino.dinoHealth = battleDino.dinoHealth - battleBot.weapon.weaponPower;
                 bedRock.herdHealth = bedRock.herdHealth - battleBot.weapon.weaponPower;
+                battleBot.robotPower = battleBot.robotPower - attackEnergy;
             }
             else
             {
                 bedRock.herdHealth = bedRock.herdHealth - battleDino.dinoHealth;
                 battleDino.dinoHealth = 0;
+                battleBot.robotPower = battleBot.robotPower - attackEnergy;
             }
             Console.WriteLine("\nBattle Dino "+ battleDino.dinoType + " health: "+battleDino.dinoHealth);
             Console.WriteLine("Bedrocks overall heard heath: " + bedRock.herdHealth+"\n");
@@ -100,15 +134,15 @@ namespace RobotDinosaur
             // While loop to run until either rebel fleet or bedrock herd lose
             while (rebel.fleetHealth > 0 && bedRock.herdHealth > 0)
             {
-                PickCombatants();
+                PickAttackDino();
                 DinoAttack();
-                PickCombatants();
+                PickAttackBot();
                 BotAttack();
                 UpDateStandings();
             }
             if(rebel.fleetHealth > bedRock.herdHealth)
             {
-                Console.WriteLine ("The rebel alliance wins!  Congrats Robot combatants");
+                Console.WriteLine ("The rebel alliance wins! Congrats Robot combatants");
             }
             else
             {

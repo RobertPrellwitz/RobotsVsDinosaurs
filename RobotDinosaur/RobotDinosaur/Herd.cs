@@ -13,11 +13,11 @@ namespace RobotDinosaur
         {
             //initiate sample herd
             herd = new List<Dinosaur>();
-            Dinosaur d1=CreateDinosaur("Snorkasaurus", 100, 100, 50);
+            Dinosaur d1=CreateDinosaur("Snorkasaurus", 100, 30, 50);
             PopulateHerd(d1);
-            Dinosaur d2 = CreateDinosaur("Tyrano", 100, 100, 50);
+            Dinosaur d2 = CreateDinosaur("Tyrano", 100, 50, 25);
             PopulateHerd(d2);
-            Dinosaur d3 = CreateDinosaur("godzilla", 100, 100, 50);
+            Dinosaur d3 = CreateDinosaur("godzilla", 100, 100, 25);
             PopulateHerd(d3);
             startingHerdHealth(herd);
         }
