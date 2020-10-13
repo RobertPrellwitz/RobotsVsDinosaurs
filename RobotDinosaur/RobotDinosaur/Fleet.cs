@@ -15,10 +15,9 @@ namespace RobotDinosaur
 
         public Fleet()
         {
-           
             robotWeapons = new List<Weapon>();
             Weapon w1 = createWeapons("Broad Sword", 25);
-            //robotWeapons.Add(w1);
+            //robotWeapons.Add(w1);        ---- optional way to make happen
             PoplulateWeaponList(w1);
             Weapon w2 = createWeapons("Mace", 15);
             PoplulateWeaponList(w2);
@@ -29,31 +28,30 @@ namespace RobotDinosaur
             Weapon w5 = createWeapons("Thors Hammer", 150);
             PoplulateWeaponList(w5);
 
-
             fleet = new List<Robot>();
-
+            Console.WriteLine("BattleBots here is your list of weapon choices:");
             for (int i = 0; i < robotWeapons.Count; i++)
 
             {
                 Console.WriteLine(i +" "+ robotWeapons[i].type );
             }
 
-            Console.WriteLine("BattleBot please choose your weapon:\n enter a number to select");
+            Console.WriteLine("BattleBot 1 please choose your weapon:\n enter a number to select");
             int R1int = Convert.ToInt16(Console.ReadLine());
             Weapon R1Weapon = robotWeapons[R1int];
-            Robot R1 = CreateRobot("R2 D2", 100, 30, R1Weapon);
+            Robot R1 = CreateRobot("R2 D2", 200, 30, R1Weapon);
             PoplulateFleet(R1);
 
-            Console.WriteLine("BattleBot please choose your weapon:\n enter a number to select");
+            Console.WriteLine("BattleBot 2 please choose your weapon:\n enter a number to select");
             int R2int = Convert.ToInt16(Console.ReadLine());
             Weapon R2Weapon = robotWeapons[R2int];
             Robot R2 = CreateRobot("C3PO", 100, 50,R2Weapon);
             PoplulateFleet(R2);
 
-            Console.WriteLine("BattleBot please choose your weapon:\n enter a number to select");
+            Console.WriteLine("BattleBot 3 please choose your weapon:\n enter a number to select");
             int R3int = Convert.ToInt16(Console.ReadLine());
             Weapon R3Weapon = robotWeapons[R3int];
-            Robot R3 = CreateRobot("Eliminator", 100, 100,R3Weapon);
+            Robot R3 = CreateRobot("Eliminator", 150, 100,R3Weapon);
             PoplulateFleet(R3);
 
             startingFleetHealth(fleet);

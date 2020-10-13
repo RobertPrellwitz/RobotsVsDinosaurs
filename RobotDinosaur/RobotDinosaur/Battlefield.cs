@@ -15,12 +15,11 @@ namespace RobotDinosaur
         public int attackEnergy;
         public Dinoattack attack;
         public int selector;
-        //public Dinosuar 
-        //Random rand;  for later gameplay enhancment
-
         public Robot battleBot;
         public Dinosaur battleDino;
+        public double dinoPower;
         public Dinoattack[] dinoAttackArray = new Dinoattack[3];
+        //Random rand;  for later gameplay enhancment
 
         public Battlefield()
         {
@@ -78,31 +77,33 @@ namespace RobotDinosaur
                     break;
                 }
             }
-            Console.WriteLine("Dino choose and attack method: select a number");
+            Console.WriteLine("\nDino choose and attack method: select a number");
             for (int i = 0; i < dinoAttackArray.Length; i++)
             {
                 Console.WriteLine(i +" "+ dinoAttackArray[i].attackMethod);
             }
+            // array example of an foreach
             //foreach(Dinoattack item in dinoAttackArray)
             //{
             //    //Console.WriteLine(attack.attackMethod);
             //    Console.WriteLine(item.attackMethod);
             //}
             selector = Convert.ToInt32(Console.ReadLine());
+            dinoPower = (battleDino.dinoAttackPower * dinoAttackArray[selector].attackMult);
         }
 
         public void DinoAttack()
         {
-            Console.WriteLine("The Bedrock Herd is launching an attack against the Robot Fleet");
+            Console.WriteLine("\nThe Bedrock Herd is launching an attack against the Robot Fleet");
             Console.WriteLine(battleDino.dinoType + " is attacking "+ battleBot.robotName);
             Console.WriteLine("\nBattle Bot " + battleBot.robotName + " health: " + battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet overall health " + rebel.fleetHealth+"\n");
-            int dinoPower = (int)((int)battleDino.dinoAttackPower * attack.attackMult);
+            int dinoPowerint = (int)dinoPower;
 
-            if (battleBot.robotHealth > dinoPower)
+            if (battleBot.robotHealth > dinoPowerint)
             {
-                battleBot.robotHealth = battleBot.robotHealth - dinoPower;
-                rebel.fleetHealth = rebel.fleetHealth - dinoPower;
+                battleBot.robotHealth = battleBot.robotHealth - dinoPowerint;
+                rebel.fleetHealth = rebel.fleetHealth - dinoPowerint;
                 battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
             }
             else
@@ -112,18 +113,6 @@ namespace RobotDinosaur
                 battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
 
             }
-            //if (battleBot.robotHealth > battleDino.dinoAttackPower)
-            //{
-            //    battleBot.robotHealth = battleBot.robotHealth - battleDino.dinoAttackPower;
-            //    rebel.fleetHealth = rebel.fleetHealth - battleDino.dinoAttackPower;
-            //    battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
-            //}
-            //else
-            //{
-            //    rebel.fleetHealth = rebel.fleetHealth - battleBot.robotHealth;
-            //    battleBot.robotHealth = 0;
-            //    battleDino.dinoEnergy = battleDino.dinoEnergy - attackEnergy;
-            //}
 
             Console.WriteLine("Battle Bot "+ battleBot.robotName + " remaining health: "+battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet remaining overall health "+ rebel.fleetHealth+"\n");
@@ -158,7 +147,7 @@ namespace RobotDinosaur
         {
             Console.WriteLine("At the end of this round of battle the standings are");
             Console.WriteLine("Robots with " + rebel.fleetHealth + " health remaining!");
-            Console.WriteLine("Dinosaurs with "+ bedRock.herdHealth+ " health remaining!");
+            Console.WriteLine("Dinosaurs with "+ bedRock.herdHealth+ " health remaining!\n");
         }
 
         public void RunBattle()

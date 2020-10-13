@@ -22,15 +22,5 @@ namespace RobotDinosaur
             this.dinoAttackPower = dinoAttackPower;
         }
 
-        //public  Dinoattack[] dinoAttackArray = new Dinoattack[2];
-
-        //public void AddDinoAttack()
-        //{
-        //    dinoAttackArray[0] = new Dinoattack("Crane Kick", 2);
-        //    dinoAttackArray[1] = new Dinoattack("Kung Fu Grip", 0.5);
-        //    dinoAttackArray[2] = new Dinoattack("Camel Clutch", 1.25);
-        //}
-
-
     }
 }
