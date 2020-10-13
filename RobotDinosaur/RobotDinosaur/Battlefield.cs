@@ -12,7 +12,7 @@ namespace RobotDinosaur
         public int  dinoDamage;
         public Herd bedRock;
         public Fleet rebel;
-        public int i; // counter variable
+        // counter variable
 
         public Robot battleBot;
         public Dinosaur battleDino;
@@ -29,26 +29,20 @@ namespace RobotDinosaur
 
         public void PickCombatants()
         {   /// select robot for attack
-            for (i = 0; i < rebel.fleet.Count; i++)
+            for (int i = 0; i < rebel.fleet.Count; i++)
             {
                 if (rebel.fleet[i].robotHealth > 0)
                 {
                     battleBot = rebel.fleet[i];
-                }
-                else
-                {
-                    i++;
-                }
+                    break;
+                }          
             }
             for (int j = 0; j < bedRock.herd.Count; j++)
             {
                 if (bedRock.herd[j].dinoHealth > 0)
                 {
                     battleDino = bedRock.herd[j];
-                }
-                else
-                {
-                    j++;
+                    break;
                 }
             }
         }
@@ -104,6 +98,16 @@ namespace RobotDinosaur
             // While loop to run until either rebel fleet or bedrock herd lose
             //while (rebel.fleetHealth > 0 && bedRock.herdHealth > 0)
            
+            PickCombatants();
+            DinoAttack();
+            BotAttack();
+            UpDateStandings();
+
+            PickCombatants();
+            DinoAttack();
+            BotAttack();
+            UpDateStandings();
+
             PickCombatants();
             DinoAttack();
             BotAttack();
