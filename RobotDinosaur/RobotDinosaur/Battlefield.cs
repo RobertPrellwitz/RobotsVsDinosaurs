@@ -15,7 +15,6 @@ namespace RobotDinosaur
         public int attackEnergy;
         //Random rand;  for later gameplay enhancment
         
-
         public Robot battleBot;
         public Dinosaur battleDino;
         // Fleet object
@@ -75,7 +74,7 @@ namespace RobotDinosaur
         public void DinoAttack()
         {
             Console.WriteLine("The Bedrock Herd is launching an attack against the Robot Fleet");
-            Console.WriteLine(battleDino.dinoType + " is attacking "+ battleBot);
+            Console.WriteLine(battleDino.dinoType + " is attacking "+ battleBot.robotName);
             Console.WriteLine("\nBattle Bot " + battleBot.robotName + " health: " + battleBot.robotHealth);
             Console.WriteLine("Rebel Fleet overall health " + rebel.fleetHealth+"\n");
             
@@ -136,6 +135,10 @@ namespace RobotDinosaur
             {
                 PickAttackDino();
                 DinoAttack();
+                if (rebel.fleetHealth == 0)
+                {
+                    break;
+                }
                 PickAttackBot();
                 BotAttack();
                 UpDateStandings();
