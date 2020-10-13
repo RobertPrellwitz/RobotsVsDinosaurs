@@ -8,12 +8,12 @@ namespace RobotDinosaur
     public class Weapon
     {   //Member Variables
         public string type;
-        public int power;
+        public int weaponPower;
 
         public Weapon(string type, int power)
         {
             this.type = type;
-            this.power = power;
+            this.weaponPower = power;
 
         }
     }

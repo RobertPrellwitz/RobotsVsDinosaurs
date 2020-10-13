@@ -13,9 +13,13 @@ namespace RobotDinosaur
         public Fleet()
         {
             fleet = new List<Robot>();
-            Robot R1 = CreateRobot("R2 D2", 300, 25);
-            Robot R2 = CreateRobot("C3PO", 50, 5);
-            Robot R3 = CreateRobot("Eliminator", 350, 100);
+            Robot R1 = CreateRobot("R2 D2", 100, 25);
+            PoplulateFleet(R1);
+            Robot R2 = CreateRobot("C3PO", 100, 5);
+            PoplulateFleet(R2);
+            Robot R3 = CreateRobot("Eliminator", 100, 100);
+            PoplulateFleet(R3);
+            startingFleetHealth(fleet);
         }
         public Robot CreateRobot(string robotName, int robotHealth, int robotPower)//, List<string> weapon)
         {
@@ -37,9 +41,5 @@ namespace RobotDinosaur
             }
         }
 
-        public void FleetDamage()
-        {
-          //  fleetHealth = fleetHealth - Battlefield.robotDamage;
-        }
     }
 }

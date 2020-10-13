@@ -11,6 +11,9 @@ namespace RobotDinosaur
         {
             Console.WriteLine("Hello World!");
 
+            Battlefield sample = new Battlefield();
+            sample.RunBattle();
+
 
             // game initiation 
 

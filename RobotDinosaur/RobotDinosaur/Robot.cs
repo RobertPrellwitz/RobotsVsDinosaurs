@@ -19,7 +19,7 @@ namespace RobotDinosaur
             this.robotName= robotName;
             this.robotHealth = robotHealth;
             this.robotPower = robotPower;
-            this.weapon = new Weapon("sword",10);
+            this.weapon = new Weapon("sword",25);
 
 
         }

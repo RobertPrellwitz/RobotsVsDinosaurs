@@ -13,12 +13,13 @@ namespace RobotDinosaur
         {
             //initiate sample herd
             herd = new List<Dinosaur>();
-            Dinosaur d1=CreateDinosaur("Snorkasaurus", 100, 125, 25);
+            Dinosaur d1=CreateDinosaur("Snorkasaurus", 100, 100, 50);
             PopulateHerd(d1);
-            Dinosaur d2 = CreateDinosaur("Tyrano", 100, 100, 12);
+            Dinosaur d2 = CreateDinosaur("Tyrano", 100, 100, 50);
             PopulateHerd(d2);
-            Dinosaur d3 = CreateDinosaur("godzilla", 150, 150, 50);
+            Dinosaur d3 = CreateDinosaur("godzilla", 100, 100, 50);
             PopulateHerd(d3);
+            startingHerdHealth(herd);
         }
         public Dinosaur CreateDinosaur(string dinoType, int dinoHealth, int dinoEnergy, int dinoAttackPower)
         {
@@ -36,9 +37,6 @@ namespace RobotDinosaur
             {
                 herdHealth = herdHealth + dinosaur.dinoHealth;
             }
-        }
-        public void DinoDamage()
-        {
         }
     }
 
